@@ -1,0 +1,33 @@
+NAME: Pratham Yadav
+PRN: 2020BTEIT00006
+Subject: CA Lab Assignment No.6
+
+
+// Below is the CLI for getting the criteria of relative grading of ISE
+// MSE and ESE of a students.
+
+
+awk -F',' '{
+    ISEMarksTotal += ($3+$6+$9+$12+$15);
+    ISEMean=ISEMarksTotal/10;
+    ISEDiff+=((($3+$6+$9+$12+$15)-ISEMean)*(($3+$6+$9+$12+$15)-ISEMean));
+    ISEStandardDeviation=sqrt(ISEDiff/(9));
+    MSEMarksTotal+=($4+$7+$10+$13+$16);
+    MSEMean=MSEMarksTotal/10;
+    MSEDiff+=((($4+$7+$10+$13+$16)-MSEMean)*(($4+$7+$10+$13+$16)-MSEMean));
+    MSEStandarDeviation=sqrt(MSEDiff/(9));
+    ESEMarksTotal+=($5+$8+$11+$14+$17);
+    ESEMean=ESEMarksTotal/10;
+    ESEDiff+=((($5+$8+$11+$14+$17)-ESEMean)*(($5+$8+$11+$14+$17)-ESEMean));
+    ESEStandardDeviation=sqrt(ESEDiff/(9));
+    TOTALsum += (($3+$6+$9+$12+$15)/5 + ($4+$7+$10+$13+$16)/5 + ($5+$8+$11+$14+$17)/5);
+    TOTALmean = TOTALsum/10;
+    TOTALdiff += (((($3+$6+$9+$12+$15)/5 + ($4+$7+$10+$13+$16)/5 + ($5+$8+$11+$14+$17)/5) - TOTALmean)*((($3+$6+$9+$12+$15)/5 + ($4+$7+$10+$13+$16)/5 + ($5+$8+$11+$14+$17)/5) - TOTALmean));
+    TOTALstd = sqrt(TOTALdiff/9);
+} 
+END{
+    print(TOTALstd);
+    print(TOTALmean);
+}' data.txt
+
+

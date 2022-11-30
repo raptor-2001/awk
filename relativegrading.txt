@@ -1,0 +1,46 @@
+NAME: Pratham Yadav
+PRN: 2020BTEIT00006
+Subject: CA Lab Assignment No.6
+
+
+// Below is the CLI for getting the criteria of relative grading of ISE
+// MSE and ESE of a students.
+
+
+awk -F',' '{
+    
+    student_name = $2;
+
+    TOTALsum = (($3+$6+$9+$12+$15)/5 + ($4+$7+$10+$13+$16)/5 + ($5+$8+$11+$14+$17)/5);
+    
+    
+    Grade = "A";
+
+    if(TOTALsum >= 85){
+        Grade = "A";
+    }else if(TOTALsum >= 77){
+        Grade = "AB";
+    }else if(TOTALsum >= 69){
+        Grade = "B";
+    }else if(TOTALsum >= 61){
+        Grade = "BC";
+    }else if(TOTALsum >= 53){
+        Grade = "C";
+    }else if(TOTALsum >= 45){
+        Grade = "CD";
+    }else if(TOTALsum >= 37){
+        Grade = "D";
+    }else{
+        Grade = "F";
+    }
+    
+    print(student_name " Total Marks out of 100 = " TOTALsum " with a Grade " Grade);
+    
+}
+END{
+    
+    
+}' data.txt
+
+
+
